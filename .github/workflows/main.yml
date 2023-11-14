@@ -7,3 +7,17 @@ jobs:
             - name: Check out repository code
               uses: actions/checkout@v3
             - run: echo "$(cat hello_world.txt)"
+            
+            - name: Setup node
+              uses: actions/setup-node@v2.1.5
+              with :
+                node-version: 16
+
+            - name: Install node package manager
+              run: npm i -g npm@latest
+
+            - name: Install dependecies
+              uses: bahmutov/npm-install@v1
+
+            - name: run tests
+              uses: npm run test --if-present
